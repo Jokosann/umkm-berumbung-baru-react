@@ -1,9 +1,10 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const [searchQuery, setSearchQuery] = useState<string>(searchParams.get('q')?.toString() || '');
 
@@ -13,9 +14,9 @@ export default function Search() {
     if (searchQuery.trim() === '') {
       return alert('Masuukan kalimat yang benar.');
     }
-    setSearchParams({ q: searchQuery });
-    navigate(`/umkm?q=${encodeURIComponent(searchQuery)}`, { replace: true });
+    setSearchParams({ ...searchParams, q: searchQuery });
 
+    navigate(`${pathname}?q=${encodeURIComponent(searchQuery)}`, { replace: true });
     setSearchQuery('');
   };
 

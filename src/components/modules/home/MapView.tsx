@@ -2,7 +2,7 @@ export default function MapView() {
   return (
     <div className="mb-20">
       <div className="mb-6">
-        <h1 className="text-center md:text-start text-2xl md:text-3xl lg:text-4xl font-[800] text-primary-color mb-1">
+        <h1 className="text-center md:text-start text-2xl md:text-3xl lg:text-4xl font-[900] text-primary-color mb-1">
           Lokasi Kampung
         </h1>
         <p className="text-center md:text-left px-2 md:px-0 text-base sm:text-lg font-medium">

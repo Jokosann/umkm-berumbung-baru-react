@@ -54,7 +54,7 @@ export default function Navbar() {
         }
       )}
     >
-      <div onClick={() => navigate('/')} className="flex gap-3">
+      <div onClick={() => navigate('/')} className="flex gap-3 cursor-pointer">
         <img src={LogoKabupatenSiak} alt="logo" width={50} height={50} className="w-8 sm:w-10" />
         <div className="flex flex-col justify-center items-start text-white">
           <p className="font-[800] text-sm sm:text-sm">LAYANAN UMKM</p>
@@ -84,7 +84,7 @@ export default function Navbar() {
                 key={index}
                 onClick={() => navigate(link.href)}
                 className={clsx(
-                  'hover:underline hover:underline-offset-8 hover:decoration-1 flex gap-2 items-center',
+                  'hover:underline hover:underline-offset-8 hover:decoration-1 flex gap-2 items-center cursor-pointer',
                   {
                     'underline underline-offset-8 decoration-1': pathname === link.href,
                   }

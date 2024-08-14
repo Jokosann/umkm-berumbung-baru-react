@@ -2,9 +2,12 @@ import SearchView from '/search-logo-umkm.svg';
 import ListBusines from '../components/modules/umkm/ListBusines';
 import Search from '../components/ui/Search';
 import { useSearchParams } from 'react-router-dom';
+import Fillter from '../components/ui/Fillter';
 
 export default function UmkmPage() {
   const [searchParams] = useSearchParams();
+  const query = searchParams.get('q');
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-20 sm:px-6 sm:py-20 lg:max-w-7xl lg:px-8">
@@ -17,13 +20,12 @@ export default function UmkmPage() {
         <div className="max-w-3xl mx-auto mb-6">
           <Search />
         </div>
-        <div className="flex gap-2">
-          <button className="btn btn-outline">All</button>
-          <button className="btn btn-outline">Kuliner</button>
-          <button className="btn btn-outline">Pakaian</button>
-          <button className="btn btn-outline">Lainya</button>
-        </div>
-        <ListBusines query={searchParams.get('q')?.toString() || ''} />
+        {query && <p className="italic text-slate-500 text-sm mb-4">Hasil pencarian '{query}'</p>}
+        <Fillter />
+        <ListBusines
+          query={searchParams.get('q')?.toString() || ''}
+          type={searchParams.get('type')?.toString() || ''}
+        />
       </div>
     </div>
   );
