@@ -28,7 +28,7 @@ export default function PenghuluView() {
         <div className="w-full md:w-3/5 lg:w-2/3">
           <div ref={textRef} className="w-full h-[305px] overflow-hidden">
             <div className="my-2">
-              <h1 className="text-center md:text-start text-2xl md:text-3xl lg:text-4xl font-[800] text-primary-color">
+              <h1 className="text-center md:text-start text-2xl md:text-3xl lg:text-4xl font-[800] text-primary-color mb-1">
                 Sambutan Kepala Kampung
               </h1>
               <p className="text-center md:text-start text-2xl font-[800] uppercase">rohmat</p>
@@ -37,7 +37,7 @@ export default function PenghuluView() {
               </p>
             </div>
             <div className="py-2">
-              <p className="text-base italic mb-2">
+              <p className="italic mb-4">
                 Assalamualaikum warohmatullahi wabarokatuh, dan Salam Sejahtra bagi kita semua,
               </p>
               <q className="text-pretty">
@@ -51,7 +51,7 @@ export default function PenghuluView() {
                 adipisicing elit. Nihil non consectetur laudantium hic incidunt facilis ad distinctio
                 officia fugit voluptate.
               </q>
-              <p className="text-base italic my-2">Wassalamu&apos;alaikum warohmatullai wabarokatuh.</p>
+              <p className="italic mt-4">Wassalamu&apos;alaikum warohmatullai wabarokatuh.</p>
             </div>
           </div>
           <p

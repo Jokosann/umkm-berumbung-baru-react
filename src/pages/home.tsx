@@ -1,6 +1,8 @@
 import { FaArrowRight } from 'react-icons/fa6';
 import ContentWrapper from '../components/layout/ContentWrapper';
 import PenghuluView from '../components/modules/home/PenghuluView';
+import MapView from '../components/modules/home/MapView';
+import ListBusines from '../components/modules/umkm/ListBusines';
 
 export default function HomePage() {
   return (
@@ -33,7 +35,28 @@ export default function HomePage() {
         </div>
       </div>
       <ContentWrapper>
+        <div className="mb-20 mt-8">
+          <div className="mb-4">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-[800] text-primary-color mb-1">
+              UMKM Di Kampung Berumbung Baru
+            </h1>
+          </div>
+          <div className="flex gap-2">
+            <button className="btn btn-outline">All</button>
+            <button className="btn btn-outline">Kuliner</button>
+            <button className="btn btn-outline">Pakaian</button>
+            <button className="btn btn-outline">Lainya</button>
+          </div>
+          <div>
+            <ListBusines />
+          </div>
+        </div>
+      </ContentWrapper>
+      <ContentWrapper>
         <PenghuluView />
+      </ContentWrapper>
+      <ContentWrapper>
+        <MapView />
       </ContentWrapper>
     </>
   );

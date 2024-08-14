@@ -4,7 +4,7 @@ import ListBusinesSkeleton from './ListBusinesSekeleton';
 import { getData } from '../../../libs/firebase/service';
 import { Busines } from '../../../types/busines';
 
-export default function ListBusines({ query }: { query: string }) {
+export default function ListBusines({ query }: { query?: string }) {
   const [data, setData] = useState<Busines[]>([]);
   const [loading, setLoading] = useState(false);
 

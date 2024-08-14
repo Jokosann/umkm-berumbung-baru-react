@@ -17,6 +17,12 @@ export default function UmkmPage() {
         <div className="max-w-3xl mx-auto mb-6">
           <Search />
         </div>
+        <div className="flex gap-2">
+          <button className="btn btn-outline">All</button>
+          <button className="btn btn-outline">Kuliner</button>
+          <button className="btn btn-outline">Pakaian</button>
+          <button className="btn btn-outline">Lainya</button>
+        </div>
         <ListBusines query={searchParams.get('q')?.toString() || ''} />
       </div>
     </div>
