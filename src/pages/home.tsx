@@ -3,8 +3,11 @@ import ContentWrapper from '../components/layout/ContentWrapper';
 import PenghuluView from '../components/modules/home/PenghuluView';
 import MapView from '../components/modules/home/MapView';
 import ListBusines from '../components/modules/umkm/ListBusines';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div
@@ -24,13 +27,12 @@ export default function HomePage() {
               Sumber informasi terbaru tentang UMKM (Usaha Mikro Kecil dan Menengah) di Kampung Berumbung
               Baru
             </p>
-            <a
-              role="button"
-              href="/umkm"
+            <button
+              onClick={() => navigate('/umkm')}
               className="btn bg-primary-color text-white hover:bg-primary-color/90 hover:text-white hover:scale-105"
             >
               Lihat selengkapnya <FaArrowRight />
-            </a>
+            </button>
           </div>
         </div>
       </div>

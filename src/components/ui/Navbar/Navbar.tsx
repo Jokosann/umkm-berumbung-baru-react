@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
@@ -21,6 +21,7 @@ const NavbarMenu = [
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const [isActiveMenu, setIsActiveMenu] = useState(false);
   const [bgNav, setBgNav] = useState(false);
@@ -53,12 +54,12 @@ export default function Navbar() {
         }
       )}
     >
-      <div className="flex gap-3">
+      <div onClick={() => navigate('/')} className="flex gap-3">
         <img src={LogoKabupatenSiak} alt="logo" width={50} height={50} className="w-8 sm:w-10" />
-        <a href={'/'} className="flex flex-col justify-center items-start text-white">
+        <div className="flex flex-col justify-center items-start text-white">
           <p className="font-[800] text-sm sm:text-sm">LAYANAN UMKM</p>
           <p className="text-xs sm:text-sm font-medium">kampung Berumbung Baru</p>
-        </a>
+        </div>
       </div>
       <div
         onClick={() => setIsActiveMenu(false)}
@@ -79,9 +80,9 @@ export default function Navbar() {
         <div className="text-primary-color w-full h-full flex justify-center items-center md:w-auto md:h-auto">
           <div className="flex flex-col items-start justify-center gap-7 -mt-[68px] sm:-mt-[79px] md:mt-0 md:text-white md:w-auto md:h-auto md:flex-row md:flex md:gap-6">
             {NavbarMenu.map((link, index) => (
-              <a
+              <p
                 key={index}
-                href={link.href}
+                onClick={() => navigate(link.href)}
                 className={clsx(
                   'hover:underline hover:underline-offset-8 hover:decoration-1 flex gap-2 items-center',
                   {
@@ -91,7 +92,7 @@ export default function Navbar() {
               >
                 <span>{link.icon}</span>
                 <span>{link.title}</span>
-              </a>
+              </p>
             ))}
           </div>
         </div>

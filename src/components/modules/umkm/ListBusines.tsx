@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react';
 import ListBusinesSkeleton from './ListBusinesSekeleton';
 import { getData } from '../../../libs/firebase/service';
 import { Busines } from '../../../types/busines';
+import { useNavigate } from 'react-router-dom';
 
 export default function ListBusines({ query }: { query?: string }) {
+  const navigate = useNavigate();
+
   const [data, setData] = useState<Busines[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -63,13 +66,13 @@ export default function ListBusines({ query }: { query?: string }) {
                     <p className="text-xs font-medium text-gray-700">{item.username}</p>
                   </div>
                 </div>
-                <a
+                <p
                   className="btn btn-sm rounded-md bg-primary-color text-white font-normal hover:bg-primary-color/90"
-                  href={`/umkm/detail/${item.id}`}
+                  onClick={() => navigate(`/umkm/detail/${item.id}`)}
                 >
                   <BiDetail />
                   Lihat Detail
-                </a>
+                </p>
               </div>
             </div>
           ))}
