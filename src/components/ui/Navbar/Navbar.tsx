@@ -46,7 +46,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div
+    <nav
       className={clsx(
         'fixed top-0 left-0 right-0 z-50 w-full px-4 md:px-8 py-3 md:py-2 flex justify-between items-center bg-primary-color transition',
         {
@@ -54,13 +54,20 @@ export default function Navbar() {
         }
       )}
     >
-      <div onClick={() => navigate('/')} className="flex gap-3 cursor-pointer">
-        <img src={LogoKabupatenSiak} alt="logo" width={50} height={50} className="w-8 sm:w-10" />
+      <header onClick={() => navigate('/')} className="flex gap-3 cursor-pointer">
+        <img
+          src={LogoKabupatenSiak}
+          loading="lazy"
+          alt="logo"
+          width={50}
+          height={50}
+          className="w-8 sm:w-10"
+        />
         <div className="flex flex-col justify-center items-start text-white">
           <p className="font-[800] text-sm sm:text-sm">LAYANAN UMKM</p>
           <p className="text-xs sm:text-sm font-medium">kampung Berumbung Baru</p>
         </div>
-      </div>
+      </header>
       <div
         onClick={() => setIsActiveMenu(false)}
         className={clsx({
@@ -78,9 +85,9 @@ export default function Navbar() {
         )}
       >
         <div className="text-primary-color w-full h-full flex justify-center items-center md:w-auto md:h-auto">
-          <div className="flex flex-col items-start justify-center gap-7 -mt-[68px] sm:-mt-[79px] md:mt-0 md:text-white md:w-auto md:h-auto md:flex-row md:flex md:gap-6">
+          <ul className="flex flex-col items-start justify-center gap-7 -mt-[68px] sm:-mt-[79px] md:mt-0 md:text-white md:w-auto md:h-auto md:flex-row md:flex md:gap-6">
             {NavbarMenu.map((link, index) => (
-              <p
+              <li
                 key={index}
                 onClick={() => navigate(link.href)}
                 className={clsx(
@@ -92,9 +99,9 @@ export default function Navbar() {
               >
                 <span>{link.icon}</span>
                 <span>{link.title}</span>
-              </p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
 
@@ -124,6 +131,6 @@ export default function Navbar() {
           </svg>
         )}
       </label>
-    </div>
+    </nav>
   );
 }

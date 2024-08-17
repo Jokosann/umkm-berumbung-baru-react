@@ -10,6 +10,7 @@ export default function Footer() {
       <aside>
         <div className="rounded-full overflow-hidden">
           <img
+            loading="lazy"
             src={LogoKKN}
             alt="Logo KKN"
             width={70}
@@ -22,7 +23,7 @@ export default function Footer() {
           <br />
           Kampung Berumbung Baru Tahun 2024
         </p>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+        <p>Copyright © {new Date().getFullYear()} - Powered by Kukerta STAI SUSHA SIAK 2024</p>
       </aside>
       <div className="grid grid-flow-col gap-4 -mt-4">
         <a href="https://web.facebook.com/profile.php?id=61560516696000" target="_blank">

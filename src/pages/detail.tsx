@@ -19,29 +19,21 @@ import { formatText } from '../utils/formatText';
 export default function DetailUmkmPage() {
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<Busines | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       try {
         const result: any = await getDataById('business', id!);
         setData(result);
       } catch (error) {
         console.error('Error fetching data:', error);
         setError('Failed to fetch business details.');
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchData();
   }, [id]);
-
-  if (loading) {
-    return <div className="my-20">Loading...</div>;
-  }
 
   if (error) {
     return (
@@ -61,7 +53,7 @@ export default function DetailUmkmPage() {
 
   return (
     <ContentWrapper>
-      <div className="my-[5.5rem] max-w-3xl mx-auto">
+      <section className="my-[5.5rem] max-w-3xl mx-auto">
         <Back />
         <h1 className="mb-4 text-xl md:text-2xl font-[800] text-primary-color">Detail UMKM</h1>
         <div className="flex flex-col sm:flex-row gap-4">
@@ -71,6 +63,7 @@ export default function DetailUmkmPage() {
               alt={data.nameBusines}
               width={200}
               height={200}
+              loading="lazy"
               className="w-full h-full object-cover object-center"
             />
           </div>
@@ -82,6 +75,7 @@ export default function DetailUmkmPage() {
                   key={i}
                   src={image}
                   alt="Image busines"
+                  loading="lazy"
                   className="w-full h-full object-cover object-center rounded-lg"
                 />
               ))
@@ -118,6 +112,7 @@ export default function DetailUmkmPage() {
                     {item.name === 'tokopedia' && (
                       <div className="w-[20px] aspect-[1/1] flex justify-center">
                         <img
+                          loading="lazy"
                           src={Tokopedia}
                           alt="Tokopedia"
                           width={10}
@@ -186,7 +181,7 @@ export default function DetailUmkmPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </ContentWrapper>
   );
 }
