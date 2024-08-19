@@ -15,20 +15,26 @@ import { getDataById } from '../libs/firebase/service';
 import FacebookSvg from '../components/ui/Svg/Facebook';
 import { Busines, SosialMedia } from '../types/busines';
 import { formatText } from '../utils/formatText';
+import Loading from '../components/ui/Loading';
 
 export default function DetailUmkmPage() {
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<Busines | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const result: any = await getDataById('business', id!);
         setData(result);
       } catch (error) {
         console.error('Error fetching data:', error);
         setError('Failed to fetch business details.');
+        setData(null);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -43,6 +49,10 @@ export default function DetailUmkmPage() {
     );
   }
 
+  if (loading) {
+    return <Loading w="w-full" h="min-h-screen" />;
+  }
+
   if (!data) {
     return (
       <div className="py-20 min-h-screen w-full flex justify-center items-center">
@@ -53,7 +63,7 @@ export default function DetailUmkmPage() {
 
   return (
     <ContentWrapper>
-      <section className="my-[5.5rem] max-w-3xl mx-auto">
+      <section className="py-[5rem] max-w-3xl mx-auto">
         <Back />
         <h1 className="mb-4 text-xl md:text-2xl font-[800] text-primary-color">Detail UMKM</h1>
         <div className="flex flex-col sm:flex-row gap-4">
@@ -89,9 +99,13 @@ export default function DetailUmkmPage() {
           <div className="pb-4 border-b-2">
             <h1 className="text-center text-2xl font-bold">{data.nameBusines}</h1>
           </div>
-          <pre className="mt-4 leading-5 text-slate-500 text-balance">
-            {formatText(data.description!)}
-          </pre>
+          {data.description ? (
+            <pre className="mt-4 leading-5 text-slate-500 text-balance">
+              {formatText(data.description!)}
+            </pre>
+          ) : (
+            <p className="italic text-sm text-slate-500 mt-4">Tidak ada description</p>
+          )}
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-10 text-base">
           <div className="mt-4">
@@ -133,7 +147,7 @@ export default function DetailUmkmPage() {
                   </div>
                 ))
               ) : (
-                <p className="m-4 italic text-sm text-slate-500">Tidak ada media sosial tersedia</p>
+                <p className="italic text-sm text-slate-500">Tidak ada media sosial tersedia</p>
               )}
             </div>
           </div>

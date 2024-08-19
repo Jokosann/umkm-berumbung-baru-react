@@ -46,11 +46,11 @@ export default function Fillter() {
   }, [searchParams]);
 
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap gap-2">
       {listFillter.map((item, i: number) => (
         <button
           key={i}
-          className={`btn btn-outline hover:bg-primary-color ${
+          className={`btn btn-outline capitalize ${
             active === item.value && 'bg-primary-color text-white'
           }`}
           onClick={(e) => handleFillter(e, item.value)}

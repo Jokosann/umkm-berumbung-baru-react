@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaImages } from 'react-icons/fa';
 import { AiFillShop } from 'react-icons/ai';
 import LogoKabupatenSiak from '/images/logo-kab-siak.png';
 
@@ -16,6 +16,11 @@ const NavbarMenu = [
     href: '/umkm',
     title: 'umkm',
     icon: <AiFillShop />,
+  },
+  {
+    href: '/gallery',
+    title: 'gallery',
+    icon: <FaImages />,
   },
 ];
 

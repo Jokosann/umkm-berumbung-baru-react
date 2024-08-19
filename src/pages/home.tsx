@@ -1,11 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 
 import Hero from '../components/modules/home/Hero';
-import InfoUmkm from '../components/modules/umkm/InfoUmkm';
+import InfoUmkm from '../components/modules/home/InfoUmkm';
 import PenghuluView from '../components/modules/home/PenghuluView';
 import MapView from '../components/modules/home/MapView';
 
 import ContentWrapper from '../components/layout/ContentWrapper';
+import GaleriUmkm from '../components/modules/home/GaleriUmkm';
 
 export default function HomePage() {
   return (
@@ -23,6 +24,7 @@ export default function HomePage() {
         <InfoUmkm />
         <PenghuluView />
         <MapView />
+        <GaleriUmkm />
       </ContentWrapper>
     </>
   );

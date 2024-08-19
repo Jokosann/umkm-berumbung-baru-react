@@ -1,12 +1,15 @@
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
-import { useState } from 'react';
 
-export default function Search() {
+export default function Search({
+  searchQuery,
+  setSearchQuery,
+}: {
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
-  const [searchQuery, setSearchQuery] = useState<string>(searchParams.get('q')?.toString() || '');
 
   const handleSearch = (e: any) => {
     e.preventDefault();
@@ -14,19 +17,19 @@ export default function Search() {
     if (searchQuery.trim() === '') {
       return alert('Masuukan kalimat yang benar.');
     }
-    setSearchParams({ ...searchParams, q: searchQuery });
+    setSearchParams({ ...searchParams, q: searchQuery.toLowerCase() });
 
     navigate(`${pathname}?q=${encodeURIComponent(searchQuery)}`, { replace: true });
     setSearchQuery('');
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2">
+    <form onSubmit={handleSearch} className="flex  gap-2">
       <label className="input input-bordered flex items-center gap-2 w-full">
         <input
           type="search"
           className="grow"
-          placeholder="Search"
+          placeholder="Toko Baju, Toko Makanan"
           onChange={(e) => setSearchQuery(e.target.value)}
           value={searchQuery}
           required
@@ -44,11 +47,12 @@ export default function Search() {
           />
         </svg>
       </label>
+
       <button
         type="submit"
-        className="btn w-full sm:w-[20%] lg:w-[10%] bg-primary-color text-white hover:bg-primary-color/70"
+        className="btn w-[20%] lg:w-[10%] bg-primary-color text-white hover:bg-primary-color/90"
       >
-        Search
+        Cari
       </button>
     </form>
   );

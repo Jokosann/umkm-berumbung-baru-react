@@ -7,8 +7,14 @@
 body,
 html {
   font-family: 'Figtree', sans-serif;
+  background-color: #f6f6f6;
+  scroll-behavior: smooth;
 }
 
 pre {
   font-family: 'Figtree', sans-serif;
+}
+
+.text-shadow {
+  text-shadow: 3px 2px 0px rgba(0, 0, 0, 0.5);
 }

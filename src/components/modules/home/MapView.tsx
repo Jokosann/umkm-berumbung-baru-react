@@ -6,7 +6,7 @@ export default function MapView() {
           Lokasi Kampung
         </h1>
         <p className="text-center md:text-left px-2 md:px-0 text-base sm:text-lg font-medium">
-          Menampilkan Peta Kampung Dengan Interest Point Kampung Berumbung Baru
+          Menampilkan peta dengan interest point Kampung Berumbung Baru
         </p>
       </header>
       <div className="w-full">
