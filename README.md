@@ -17,4 +17,6 @@
 	<li><strong>Language:</strong> TypeScript</li>
 	<li><strong>Framework:</strong> React.js</li>
 	<li><strong>Database:</strong> Firebase</li>
+	<li><strong>Styling:</strong> Tailwind</li>
+	<li><strong>Framework Styling:</strong> daisyUI</li>
 </ul>
